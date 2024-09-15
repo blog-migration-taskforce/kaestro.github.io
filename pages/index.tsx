@@ -1,77 +1,101 @@
-import { GetStaticProps } from 'next'
-import path from 'path'
-import React, { useEffect, useState } from 'react'
-import DefaultLayout from '../layouts/DefaultLayout'
-import { getAllPosts, getCategories, getLatestPostsByCategory, PostData } from '../utils'
+import CategoryList from '@/components/CategoryList';
+import HomeButton from '@/components/homeButton';
+import { ScrollBottomButton, ScrollTopButton } from '@/components/scrollButtons';
+import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
+import path from 'path';
+import React, { useMemo } from 'react';
+import DefaultLayout from '../layouts/DefaultLayout';
+import { getAllPosts, getCategories, getLatestPostsByCategory, PostData } from '../utils';
 
-import CategoryList from '@/components/CategoryList'
-import HomeButton from '@/components/homeButton'
-import { ScrollBottomButton, ScrollTopButton } from '@/components/scrollButtons'
-import { useRouter } from 'next/router'
+const RecommendedPosts: React.FC<{ posts: PostData[], onPostClick: (category: string, title: string) => void }> = ({ posts, onPostClick }) => {
+  return (
+    <div className="p-4 rounded-md">
+      <h2 className="font-bold mb-4 text-black">추천 글</h2>
+      <hr className="mb-4 border-gray-300" />
+      <div className="space-y-0">
+        {posts.slice(0, 5).map((post) => (
+          <p key={post.title} onClick={() => onPostClick(post.category, post.title)} className="text-blue-500 hover:underline cursor-pointer !mb-0">
+            {post.title}
+          </p>
+        ))}
+      </div>
+      <p className="mt-4 text-blue-500 hover:underline cursor-pointer font-bold" onClick={() => onPostClick('recommended', '')}>
+        see all posts({posts.length}) in 추천 글
+      </p>
+    </div>
+  );
+};
+
+const CategoryPosts: React.FC<{ category: string, posts: PostData[], postCount: number, onPostClick: (category: string, title: string) => void }> = ({ category, posts, postCount, onPostClick }) => {
+  return (
+    <div className="p-4 rounded-md">
+      <h2 className="font-bold mb-4">{category}</h2>
+      <hr className="mb-4 border-gray-300" />
+      <div className="space-y-0">
+        {posts.map((post) => (
+          <p key={post.title} onClick={() => onPostClick(category, post.title)} className="text-blue-500 hover:underline cursor-pointer !mb-0">
+            {post.title}
+          </p>
+        ))}
+      </div>
+      <p className="mt-4 text-blue-500 hover:underline cursor-pointer font-bold" onClick={() => onPostClick(category, '')}>
+        see all posts({postCount}) in {category}
+      </p>
+    </div>
+  );
+};
 
 const HomePage: React.FC<{ postsJson: PostData[], latestPostsByCategory: { category: string, posts: PostData[] }[] }> = ({ postsJson, latestPostsByCategory }) => {
-  const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    // 클라이언트에서만 실행
-    setIsMounted(true);
-  }, []);
+  const customOrder = useMemo(() => [
+    '신변잡기', '개발일지', '서평', '개발이야기', '게임이야기', 
+    '디자인패턴', 'Algorithm', 'WeeklyPosts', 'ETC'
+  ], []);
 
-  const customOrder = ['신변잡기', '개발일지', '서평', '개발이야기', '게임이야기', '디자인패턴', 'Algorithm', 
-    'WeeklyPosts', 'ETC'
-  ]; // 사용자 정의 순서
+  const sortedPosts = useMemo(() => (
+    [...latestPostsByCategory].sort((a, b) => customOrder.indexOf(a.category) - customOrder.indexOf(b.category))
+  ), [latestPostsByCategory, customOrder]);
 
-  const sortedPosts = [...latestPostsByCategory].sort((a, b) => customOrder.indexOf(a.category) - customOrder.indexOf(b.category));
-  const recommendedPosts = postsJson.filter(post => post.data && post.data.recommended);
-  const postCountByCategory = postsJson.reduce((count, post) => {
-    count[post.category] = (count[post.category] || 0) + 1;
-    return count;
-  }, {} as { [category: string]: number });
+  const recommendedPosts = useMemo(() => postsJson.filter(post => post.data && post.data.recommended), [postsJson]);
 
-  const handlePostClick = async (category: string, postName: string) => {
+  const postCountByCategory = useMemo(() => (
+    postsJson.reduce((count, post) => {
+      count[post.category] = (count[post.category] || 0) + 1;
+      return count;
+    }, {} as { [category: string]: number })
+  ), [postsJson]);
+
+  const handlePostClick = (category: string, postName: string) => {
     console.log(`Clicked on post ${category}, postDirectory ${postName}`);
-    if (isMounted) {
-      router.push(`/${category}/${postName}`); // 클라이언트에서만 실행
-    }
+    router.push(`/${category}/${postName}`);
   };
 
-  const Layout = DefaultLayout;
-
   return (
-    <Layout title="Kaestro's BlackSmith" subtitle='프로그래밍을 단련하고, 기록하는 공간'>
+    <DefaultLayout title="Kaestro's BlackSmith" subtitle='프로그래밍을 단련하고, 기록하는 공간'>
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
-        <div className="p-4 rounded-md">
-          <h2 className="font-bold mb-4" style={{ color: 'black' }}>추천 글</h2>
-          <hr className="mb-4 border-gray-300" />
-          <div className="space-y-0">
-            {recommendedPosts.slice(0, 5).map((post) => (
-              <p key={post.title} onClick={() => handlePostClick(post.category, post.title)} className="text-blue-500 hover:underline cursor-pointer !mb-0">{post.title}</p>
-            ))}
-          </div>
-          <p className="mt-4 text-blue-500 hover:underline cursor-pointer font-bold" onClick={() => router.push(`/recommended`)}>see all posts({recommendedPosts.length}) in 추천 글</p>
-        </div>
-        
+        {/* 추천 글 컴포넌트 */}
+        <RecommendedPosts posts={recommendedPosts} onPostClick={handlePostClick} />
+
+        {/* 카테고리별 포스트 컴포넌트 */}
         {sortedPosts.map(({ category, posts }) => (
-          <div key={category} className="p-4 rounded-md">
-            <h2 className="font-bold mb-4">{category}</h2>
-            <hr className="mb-4 border-gray-300" />
-            <div className="space-y-0">
-              {posts.map((post) => (
-                <p key={post.title} onClick={() => handlePostClick(post.category, post.title)} className="text-blue-500 hover:underline cursor-pointer !mb-0">{post.title}</p>
-              ))}
-            </div>
-            <p className="mt-4 text-blue-500 hover:underline cursor-pointer font-bold" onClick={() => router.push(`/${category}`)}>see all posts({postCountByCategory[category]}) in {category}</p>
-          </div>
+          <CategoryPosts
+            key={category}
+            category={category}
+            posts={posts}
+            postCount={postCountByCategory[category]}
+            onPostClick={handlePostClick}
+          />
         ))}
       </div>
       <div><CategoryList categories={ customOrder } /></div>
       <div><HomeButton /></div>
       <div><ScrollBottomButton /></div>
       <div><ScrollTopButton /></div>
-    </Layout>
+    </DefaultLayout>
   );
-}
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   const postsDirectory = path.join(process.cwd(), '_posts');
