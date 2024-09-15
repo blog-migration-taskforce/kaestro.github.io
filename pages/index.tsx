@@ -11,7 +11,7 @@ import { getAllPosts, getCategories, getLatestPostsByCategory, PostData } from '
 const RecommendedPosts: React.FC<{ posts: PostData[], onPostClick: (category: string, title: string) => void }> = ({ posts, onPostClick }) => {
   return (
     <div className="p-4 rounded-md">
-      <h2 className="font-bold mb-4 text-black">추천 글</h2>
+      <h2 className="font-bold mb-4 !text-black">추천 글</h2>
       <hr className="mb-4 border-gray-300" />
       <div className="space-y-0">
         {posts.slice(0, 5).map((post) => (
