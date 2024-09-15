@@ -1,5 +1,6 @@
 import CategoryList from '@/components/CategoryList';
 import HomeButton from '@/components/homeButton';
+import LatestPosts from '@/components/LatestPosts';
 import { ScrollBottomButton, ScrollTopButton } from '@/components/scrollButtons';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
@@ -89,6 +90,8 @@ const HomePage: React.FC<{ postsJson: PostData[], latestPostsByCategory: { categ
           />
         ))}
       </div>
+
+      <LatestPosts posts={postsJson} onPostClick={handlePostClick} />
       <div><CategoryList categories={ customOrder } /></div>
       <div><HomeButton /></div>
       <div><ScrollBottomButton /></div>
@@ -118,6 +121,6 @@ export const getStaticProps: GetStaticProps = async () => {
       latestPostsByCategory,
     },
   };
-}
+};
 
 export default HomePage;
