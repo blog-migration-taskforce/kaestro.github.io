@@ -29,7 +29,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ posts, categories }) => {
         ))}
       </div>
       <div><HomeButton /></div>
-      <div><CategoryList categories={ categories }/></div>
+      <div><CategoryList /></div>
       <div><ScrollBottomButton /></div>
       <div><ScrollTopButton /></div>
     </Layout>

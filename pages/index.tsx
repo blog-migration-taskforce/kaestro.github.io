@@ -2,12 +2,12 @@ import CategoryList from '@/components/CategoryList';
 import HomeButton from '@/components/homeButton';
 import LatestPosts from '@/components/LatestPosts';
 import { ScrollBottomButton, ScrollTopButton } from '@/components/scrollButtons';
+import DefaultLayout from '@/layouts/DefaultLayout';
+import { getAllPosts, getCategories, getLatestPostsByCategory, PostData } from '@/utils';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import path from 'path';
 import React, { useMemo } from 'react';
-import DefaultLayout from '../layouts/DefaultLayout';
-import { getAllPosts, getCategories, getLatestPostsByCategory, PostData } from '../utils';
 
 const RecommendedPosts: React.FC<{ posts: PostData[], onPostClick: (category: string, title: string) => void }> = ({ posts, onPostClick }) => {
   return (
@@ -92,7 +92,7 @@ const HomePage: React.FC<{ postsJson: PostData[], latestPostsByCategory: { categ
       </div>
 
       <LatestPosts posts={postsJson} onPostClick={handlePostClick} />
-      <div><CategoryList categories={ customOrder } /></div>
+      <div><CategoryList /></div>
       <div><HomeButton /></div>
       <div><ScrollBottomButton /></div>
       <div><ScrollTopButton /></div>
