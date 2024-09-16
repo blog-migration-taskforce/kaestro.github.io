@@ -93,7 +93,7 @@ const Post: React.FC<{ postDataJson: PostData; title: string, category: string, 
   return (
     <Layout title={postDataJson.title} subtitle={postDataJson.data.subtitle}>
       <div>
-        <CategoryList categories={categories} />
+        <CategoryList />
         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1em' }}>
           {adjacentPosts.prev && <div><a href={`/${adjacentPosts.prev.category}/${adjacentPosts.prev.title}`}>이전 포스트: {adjacentPosts.prev.title}</a></div>}
