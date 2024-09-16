@@ -1,7 +1,7 @@
 #latest-posts {
   position: fixed;
   top: 300px; /* 스크롤에 따라 동적으로 조정될 수 있음 */
-  right: 1.5em; /* 화면 우측에 고정 */
+  right: calc(50% - 800px); /* 화면 우측에 고정 */
   width: 250px; /* 너비 설정 */
   background-color: #f8f8f8;
   padding: 10px;
