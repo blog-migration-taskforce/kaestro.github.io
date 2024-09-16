@@ -1,10 +1,10 @@
 import CategoryList from '@/components/CategoryList';
+import HomeButton from '@/components/homeButton';
 import { ScrollBottomButton, ScrollTopButton } from '@/components/scrollButtons';
+import layouts from '@/layouts/layouts';
+import { fetchAllCategories, getAdjacentPosts, getAllPosts, getPostByTitleAndCategory, PostData } from '@/utils';
 import { marked } from 'marked';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import HomeButton from '../../components/homeButton';
-import layouts from '../../layouts/layouts';
-import { fetchAllCategories, getAdjacentPosts, getAllPosts, getPostByTitleAndCategory, PostData } from '../../utils';
 
 export const getStaticPaths: GetStaticPaths = async () => {
 
@@ -15,6 +15,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       category: post.getCategory(),
       fullPath: post.getFullPath(),
       layout: post.getLayout(),
+      date: post.getDate().toISOString(),
     }
   }));
 
