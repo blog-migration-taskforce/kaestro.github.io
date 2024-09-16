@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import '../styles/categoryList.css';
 
 const INITIAL_TOP = 400;
@@ -42,12 +42,16 @@ const setupScrollAndResizeHandlers = (ref: React.RefObject<HTMLElement>) => {
   };
 };
 
-type CategoryListProps = {
-  categories: string[];
-};
-
-const CategoryList: React.FC<CategoryListProps> = ({ categories }) => {
+// CategoryList 컴포넌트
+const CategoryList: React.FC = () => {
   const categoryListRef = useRef<HTMLElement>(null);
+
+  // categories 데이터를 props가 아닌 내부에서 관리
+  const categories = useMemo(() => [
+    '신변잡기', '개발일지', '서평', '개발이야기', '게임이야기', 
+    '디자인패턴', 'Algorithm', 'WeeklyPosts', 'ETC'
+  ], []);
+
   const filteredCategories = categories.filter(
     category => !['Legacy', 'Pre-Renewal', 'ProtoType'].includes(category)
   );
