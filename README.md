@@ -6,7 +6,7 @@ github pages를 서비스를 통해 운영중인 [개인 블로그](https://kaes
 
 ## 최신 글 목록
 <!-- BLOG-POST-LIST:START -->
-- [파이프라인 아키텍처 - 복잡한 데이터 처리를 위한 아키텍처](https://kaestro.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%B4%EC%95%BC%EA%B8%B0/2024/10/20/%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98.html)
+- [로그 데이터 처리 예시로 알아보는 파이프라인 아키텍처](https://kaestro.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%B4%EC%95%BC%EA%B8%B0/2024/10/20/%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98.html)
 - [10월 4주차 알고리즘 문제](https://kaestro.github.io/algorithm/2024/10/20/10%EC%9B%94-4%EC%A3%BC%EC%B0%A8-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C.html)
 - [함수형 사고 - 액션, 계산, 데이터](https://kaestro.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%B4%EC%95%BC%EA%B8%B0/2024/10/17/%ED%95%A8%EC%88%98%ED%98%95%EC%BD%94%EB%94%A9-part1.html)
 - [LIS - 완전 탐색에서 동적 계획법까지](https://kaestro.github.io/algorithm/2024/10/01/LIS.html)
