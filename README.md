@@ -6,7 +6,7 @@ github pages를 서비스를 통해 운영중인 [개인 블로그](https://kaes
 
 ## 최신 글 목록
 <!-- BLOG-POST-LIST:START -->
-- [최근 AI 툴 사용 방식 변화와 후기](https://kaestro.github.io/2025/05/30/%EC%B5%9C%EA%B7%BC-AI%ED%88%B4-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EC%8B%9D.html)
+- [최근 AI 툴 사용 방식 변화와 후기](https://kaestro.github.io/%EC%8B%A0%EB%B3%80%EC%9E%A1%EA%B8%B0/2025/05/30/%EC%B5%9C%EA%B7%BC-AI%ED%88%B4-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EC%8B%9D.html)
 - [좋은 프로그래머는 센스와 시간으로 만들어진다](https://kaestro.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%B4%EC%95%BC%EA%B8%B0/2025/05/21/%EC%A2%8B%EC%9D%80-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EB%8A%94-%EC%84%BC%EC%8A%A4%EC%99%80-%EC%8B%9C%EA%B0%84%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A7%84%EB%8B%A4.html)
 - [비동기 및 멀티 스레드 에코 서버 개발](https://kaestro.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/2025/05/19/game_server(2).html)
 - [게임 서버 개요](https://kaestro.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80/2025/05/19/game_server(1).html)
