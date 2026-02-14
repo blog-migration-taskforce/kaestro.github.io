@@ -6,9 +6,9 @@ github pages를 서비스를 통해 운영중인 [개인 블로그](https://kaes
 
 ## 최신 글 목록
 <!-- BLOG-POST-LIST:START -->
+- [실무를 잘하면 문제가 안 보인다](https://kaestro.github.io/%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%97%AC%EC%A0%95/2026/02/15/%EC%8B%A4%EB%AC%B4%EB%A5%BC-%EC%9E%98%ED%95%98%EB%A9%B4-%EB%AC%B8%EC%A0%9C%EA%B0%80-%EC%95%88-%EB%B3%B4%EC%9D%B8%EB%8B%A4.html)
 - [인왕3, 고양이를 쫓았더니 길이 열렸다](https://kaestro.github.io/%EA%B2%8C%EC%9E%84%EC%9D%B4%EC%95%BC%EA%B8%B0/2026/02/08/%EC%9D%B8%EC%99%953,-%EA%B3%A0%EC%96%91%EC%9D%B4%EB%A5%BC-%EC%AB%93%EC%95%98%EB%8D%94%EB%8B%88-%EA%B8%B8%EC%9D%B4-%EC%97%B4%EB%A0%B8%EB%8B%A4.html)
 - [팀장으로서 보낸 첫 달](https://kaestro.github.io/%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%97%AC%EC%A0%95/2026/02/01/%ED%8C%80%EC%9E%A5%EC%9C%BC%EB%A1%9C%EC%8D%A8-%EC%B2%AB%EB%8B%AC%EC%97%90-%EB%8C%80%ED%95%9C-%EC%86%8C%EA%B3%A0.html)
 - [RnR과 책임](https://kaestro.github.io/%EB%A6%AC%EB%8D%94%EC%8B%AD%EC%97%AC%EC%A0%95/2026/02/01/RnR%EA%B3%BC-%EC%B1%85%EC%9E%84.html)
 - [블로그 UI/UX 개선기](https://kaestro.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%B4%EC%95%BC%EA%B8%B0/2026/02/01/%EB%B8%94%EB%A1%9C%EA%B7%B8-UI-UX-%EA%B0%9C%EC%84%A0%EA%B8%B0.html)
-- [블로그 CI/CD 자동화 구축기](https://kaestro.github.io/%EA%B0%9C%EB%B0%9C%EC%9D%B4%EC%95%BC%EA%B8%B0/2026/02/01/%EB%B8%94%EB%A1%9C%EA%B7%B8-CI-CD-%EC%9E%90%EB%8F%99%ED%99%94-%EA%B5%AC%EC%B6%95%EA%B8%B0.html)
 <!-- BLOG-POST-LIST:END -->
